@@ -1,14 +1,16 @@
 from typing import List, Optional
-
 from fastapi import FastAPI
+
+import numpy as np
+
 
 app = FastAPI()
 from pydantic import BaseModel
 
 class Item(BaseModel):
     name: str
-    price: float
-    cov: List[float] = []
+    # to be matrix
+    A: List[List[float]] = []
 
 
 @app.get("/")
@@ -23,4 +25,6 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 @app.post("/items/")
 async def create_item(item: Item):
-    return item
+    A = np.array(item.A)
+    U, S, Vh = np.linalg.svd(A)
+    return {"U": U.tolist(),"S": S.tolist(),"Vh": Vh.tolist()}
