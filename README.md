@@ -32,5 +32,14 @@ $ curl -X POST localhost:8080/items/ -H "accept: application/json" -H "Content-T
 
 /console$ dotnet run
 
+{"name":"Foo","A":[[1.0, 0.032], [0.032, 1.0]]}
+
+Factorize A = U S Vh
+
+a11: 1 		 a12: 0.032
+
+a21: 0.032 	 a22: 1
+
+
 
 
