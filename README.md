@@ -2,14 +2,21 @@
 
 Test of FastAPI https://fastapi.tiangolo.com/
 
-$ uvicorn main:app --reload
+/api$ uvicorn main:app --reload
 
 $ curl -X POST localhost:8000/items/ -H "accept: application/json" -H "Content-Type: application/json" -d "{\"name\":\"Foo\",\"A\":[[1.0, 0.032], [0.032, 1.0]]}"
 
 ## Docker
 
-$ docker build . -t svd
+/api$ docker build . -t svd
 
-$ docker run -i -d -p 8080:5000 svd
+/api$ docker run -i -d -p 8080:5000 svd
 
 $ curl -X POST localhost:8080/items/ -H "accept: application/json" -H "Content-Type: application/json" -d "{\"name\":\"Foo\",\"A\":[[1.0, 0.032], [0.032, 1.0]]}"
+
+## console
+
+/console$ dotnet run
+
+{"U":[[-0.7071067811865472,-0.7071067811865478],[-0.707106781186548,0.7071067811865472]],"S":[1.0319999999999998,0.968],"Vh":[[-0.7071067811865472,-0.7071067811865479],[-0.7071067811865479,0.7071067811865472]]}
+
