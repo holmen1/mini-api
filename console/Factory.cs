@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -11,12 +10,12 @@ namespace console
     public class Factory
     {
         private string _jparams;
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient Client = new HttpClient();
         
         public Factory(string jparams)
         {
             _jparams = jparams;
-            client.BaseAddress = new Uri("http://localhost:8080/items/");
+            Client.BaseAddress = new Uri("http://localhost:8080/items/");
         }
 
         
@@ -25,7 +24,7 @@ namespace console
         {
             using var content = new StringContent(_jparams, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync((Uri)null, content);
+            var response = await Client.PostAsync((Uri)null, content);
             using var contentStream = await response.Content.ReadAsStreamAsync();
             var jfactors = await JsonSerializer.DeserializeAsync<Factors>(contentStream);
 
@@ -37,7 +36,7 @@ namespace console
         {
             using var content = new StringContent(_jparams, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync((Uri)null, content);
+            var response = await Client.PostAsync((Uri)null, content);
             using var contentStream = await response.Content.ReadAsStreamAsync();
             var jfactors = await JsonSerializer.DeserializeAsync<Factors>(contentStream);
 

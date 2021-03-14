@@ -14,11 +14,11 @@ namespace console
         private static async Task Factorize()
         {
             string jparams = "{\"name\":\"Foo\",\"A\":[[1.0, 0.032], [0.032, 1.0]]}";
-            Factory _factory = new Factory(jparams);
+            Factory factory = new Factory(jparams);
             Console.WriteLine(jparams);
             Console.WriteLine("Factorize A = U S Vh");
 
-            var v = _factory.GetJsonFactors();
+            var v = factory.GetJsonFactors();
             string content = await v;
 
             Console.WriteLine($"Result: {content}");
