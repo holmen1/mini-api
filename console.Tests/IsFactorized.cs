@@ -35,7 +35,7 @@ namespace console.UnitTests.Services
 
             double diff = Math.Abs(a11 - 1.0) + Math.Abs(a12 - 0.032) +
                             Math.Abs(a21 - 0.032) + Math.Abs(a22 - 1.0);
-            Assert.Less(diff, 1E-3, "1 should not be prime");
+            Assert.Less(diff, 1E-6, "Error above tolerance");
         }
     }
 }
