@@ -15,11 +15,10 @@ namespace console
         public Factory(string jparams)
         {
             _jparams = jparams;
-            Client.BaseAddress = new Uri("http://localhost:8080/items/");
+            Client.BaseAddress = new Uri("http://localhost:8000/items/");
         }
 
         
-
         public async Task<string> GetJsonFactors()
         {
             using var content = new StringContent(_jparams, Encoding.UTF8, "application/json");
@@ -31,18 +30,7 @@ namespace console
             var json = JsonSerializer.Serialize(jfactors);
             return json;
         }
-
-        public async Task<Factors> GetFactors()
-        {
-            using var content = new StringContent(_jparams, Encoding.UTF8, "application/json");
-
-            var response = await Client.PostAsync((Uri)null, content);
-            using var contentStream = await response.Content.ReadAsStreamAsync();
-            var jfactors = await JsonSerializer.DeserializeAsync<Factors>(contentStream);
-
-            return jfactors;
-        }
-
+        
         public class Factors
         {
             public double[][] U { get; set; }
