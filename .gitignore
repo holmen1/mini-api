@@ -523,5 +523,8 @@ healthchecksdb
 
 *.ipynb_checkpoints
 
+.ionide
+
+
 
 
